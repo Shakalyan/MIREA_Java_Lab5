@@ -1,0 +1,4 @@
+Pen Common 1 100
+GameChair Rare 300 5
+Mouse Medium 50 30
+PC Legendary 2000 1
