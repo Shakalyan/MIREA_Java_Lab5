@@ -1,0 +1,7 @@
+Pen Common 1 100
+Mouse Medium 50 50
+Keyboard Medium 70 40
+Monitor Rare 350 10
+Headphones Medium 50 45
+PC Epic 2000 2
+Leon Legendary 100000 1

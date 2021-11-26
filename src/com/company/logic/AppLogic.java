@@ -165,6 +165,8 @@ public class AppLogic
     {
         for(var c : commands)
             System.out.println(c.getName() + " - " + c.getDescription());
+        System.out.println( "If you want to add new case, open GameCases.txt and add line in format " +
+                            "\"<nameWithoutSpaces> <rarityWithoutSpaces> <price> <count>\"");
     }
 
     public static boolean gameCasesIsUpdated()
