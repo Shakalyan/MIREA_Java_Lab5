@@ -11,19 +11,22 @@ import java.util.logging.Logger;
 
 public class Main {
 
+
     public static void main(String[] args)
     {
 
-        AppLogic.setPathToLotsFile("GameLots.txt");
+        AppLogic.setPathToLotsFile("GameCases.txt");
 
-        AppLogic.updateGameCases();
-        System.out.println("Waiting for update...");
-        while(!AppLogic.gameCasesIsUpdated())
+        System.out.println("Hello!\n");
+        System.out.println("There are all commands you can use:");
+
+        String input = "help";
+        Scanner scanner = new Scanner(System.in);
+        while(AppLogic.executeCommand(input))
         {
-
+            System.out.print("command>");
+            input = scanner.nextLine();
         }
-        System.out.println("Updated!");
-        AppLogic.printGameCases();
 
     }
 }

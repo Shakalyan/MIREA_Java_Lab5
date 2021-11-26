@@ -19,7 +19,8 @@ public class FileController implements Runnable
     {
         fileProcessed.set(false);
         String path = AppLogic.getPathToLotsFile();
-        ArrayList<GameCase> initialGameCases = AppLogic.getGameCases();
+        ArrayList<GameCase> initialGameCases = new ArrayList<GameCase>(AppLogic.getGameCases());
+        AppLogic.getGameCases().clear();
 
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(path)))
         {

@@ -31,6 +31,11 @@ public class GameCase
         return cost;
     }
 
+    public int getCount()
+    {
+        return count;
+    }
+
     @Override
     public String toString()
     {
