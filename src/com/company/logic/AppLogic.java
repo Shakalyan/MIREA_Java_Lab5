@@ -35,6 +35,7 @@ public class AppLogic
         gameCasesGeneralCount = 0;
 
         commands = new ArrayList<>();
+        commands.add(new Command("help", "print all the commands"));
         commands.add(new Command("update_cases", "upload cases from file GameCases.txt"));
         commands.add(new Command("print_cases", "print uploaded cases"));
         commands.add(new Command("get_case_info <id>", "get information about case by id(int) e.g. \"get_case_info 1\""));
@@ -56,20 +57,28 @@ public class AppLogic
     {
         gameCasesUpdated = false;
 
-
         ExecutorService fileControllerES = Executors.newSingleThreadExecutor();
         fileControllerES.execute(fileController);
         fileControllerES.shutdown();
 
-        System.out.println("Waiting for update...");
-        while(!AppLogic.gameCasesIsUpdated()) {}
-
-        gameCases.sort((gc1, gc2) -> gc1.getCount() - gc2.getCount());
-        gameCasesGeneralCount = 0;
-        for(var gc : gameCases)
-            gameCasesGeneralCount += gc.getCount();
-
-        System.out.println("Updated!");
+        System.out.print("Waiting for update...");
+        try
+        {
+            while (!AppLogic.gameCasesIsUpdated()) {
+                Thread.sleep(100);
+                System.out.print('.');
+            }
+            System.out.println();
+            gameCases.sort((gc1, gc2) -> gc1.getCount() - gc2.getCount());
+            gameCasesGeneralCount = 0;
+            for(var gc : gameCases)
+                gameCasesGeneralCount += gc.getCount();
+            System.out.println("Updated!");
+        }
+        catch(InterruptedException exception)
+        {
+            System.out.println("Bad update: " + exception.getMessage());
+        }
 
     }
 
